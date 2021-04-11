@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+  <form method="get">
+  
+    <div class="search-wrapper">
+      <input type="text" name="search-area" placeholder="Enter Product name to search.." value="{{ search_input }}">
+      <input type="submit" value="Search">
+    </div>
+  </form>
+
+  <div class="container">
+    {% for product in products %}
+      <div class="movie">
+        <img src="{{ product.main_photo.url }}" alt="{{ product.title }}" />
+        <div class="movie-info">
+          <h3>{{ product.title | title }}</h3>
+          <span class="green">{{ product.category }}</span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <p>Name: <b>{{ product.title | title }}</b></p>
+          <p>Material: <b>{{ product.material | title }}</b></p>
+          <p>Size: <b>{{ product.size }}</b></p>
+          <!-- <button id="open">View Details</button> -->
+          <button><a href="https://wa.me/919545454333?text=I'm%20interested%20in%20%0AName:%20*{{product.title | title}}*%20%0ASize:%20*{{product.size}}*%0ACategory:%20*{{product.category}}*" target="_blank" style="color: #fff; text-decoration: none;">Contact In WhatsApp</a></button>
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-container" id="modal">
+    <div class="modal"> 
+        
+        <div class="modal-header">
+            <h3>Printed Kids Towel</h3>
+            <button class="close-btn" id="close">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-content">
+            <p>Thanks</p>
+            
+            <div class="owl-carousel owl-theme">
+                <img src="https://picsum.photos/id/456/300/200" alt="" class="owl-slide"> 
+            </div>
+            <div class="contact-info">
+                <button>Click here to order in WhatsApp</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock content %}
+    
